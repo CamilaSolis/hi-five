@@ -1,4 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
+import logoBig from "./../img/logo-big.png";
+import { FaUserAlt, FaLock } from "react-icons/fa";
 import Signup from "./Signup";
 import { withRouter } from "react-router";
 import * as firebase from "firebase/app";
@@ -27,12 +29,10 @@ const Login = ({ history }) => {
       .auth()
       .signInWithEmailAndPassword(usuario.value, clave.value)
       .then(result => {
-        console.log(result);
         history.push("/");
       })
       .catch(error => {
         seterror(error.message)
-
         if(error.code === "auth/invalid-email"){
           seterror("Su email es incorrecto")
         } else if(error.code === "auth/wrong-password"){
@@ -53,7 +53,6 @@ const Login = ({ history }) => {
     })
     .catch(error => {
       seterror(error.message)
-      console.log(error.code)
       if(error.code === "auth/popup-closed-by-user"){
         seterror("Inicio de sesión incompleto")
       }
@@ -67,50 +66,58 @@ const Login = ({ history }) => {
       <div className="hero-body">
         <div className="container">
           <div className="columns is-centered">
-              <div className="column is-5-tablet is-4-desktop is-3-widescreen">
-                {!signup ? (
-                  <form className="box" onSubmit={correoClave}>
-                    <div className="field">
-                      <h1>Ingreso</h1>
+            <div className="column is-8-tablet is-9-desktop is-3-widescreen">
+              {!signup ? (
+              <form className="columns box" onSubmit={correoClave}>
+                <div className="column is-one-third">
+                  <img className="responsive-logo" src={logoBig} />
+                </div>
+                <div className="column">
+                  <div className="field">
+                  <p className="subtitle is-4">Inicia sesión para saber a qué compañeros debes darle un HI-FIVE</p>
+                  </div>
+                  {error? <div className="field"><Errores mensaje={error}/></div>:null}
+                  <div className="field">
+                    <div className="control has-icons-left has-icons-right">
+                      <input className="input" type="text" name="usuario" placeholder="E-mail de Usuario" />
+                      <span className="icon is-small is-left">
+                        <FaUserAlt />
+                      </span>
                     </div>
-                    {error? <div className="field"><Errores mensaje={error}/></div>:null}
-                    <div className="field">
-                      <label className="label">Usuario</label>
-                      <div className="control">
-                        <input className="input" type="text" name="usuario" placeholder="Usuario" />
-                      </div>
+                  </div>
+                  <div className="field">
+                    <div className="control has-icons-left has-icons-right">
+                      <input className="input" type="password" name="clave" placeholder="Clave" />
+                      <span className="icon is-small is-left">
+                        <FaLock />
+                      </span>
                     </div>
-                    <div className="field">
-                      <div className="control">
-                        <input className="input" type="password" name="clave" placeholder="Clave" />
-                      </div>
-                    </div>
-                    <div className="field">
-                      <button className="button is-primary is-fullwidth">
-                        Ingresa
-                      </button>
-                      O{" "}
-                      <button onClick={() => setsignup(true)} className="button is-primary is-fullwidth">
-                          Registrate Ahora!
-                      </button>
-                    </div>
-                    <div className="field">
-                      <button className="button is-primary is-fullwidth" onClick={() => socialLogin(googleAuthProvider)}>
-                        <span className="icon">
-                            <i className="fa fa-google"></i>
-                        </span>
-                          Google
-                      </button>
-                    </div>
-                  </form>
-                ) : (
-                  <Signup setsignup={setsignup} />
-                )}
+                  </div>
+                  <div className="field">
+                    <button className="button is-primary is-fullwidth">
+                      Ingresa
+                    </button>
+                  </div>
+                  <div className="field">
+                    <button onClick={() => setsignup(true)} className="button is-primary is-fullwidth">
+                      Regístrate Ahora!
+                    </button>
+                  </div>
+                  <div className="field">
+                    <button className="button is-primary is-danger is-fullwidth" onClick={() => socialLogin(googleAuthProvider)}>
+                        Inicia sesión con Google
+                    </button>
+                  </div>
+                </div>
+              </form>
+              ) : (
+                <Signup setsignup={setsignup} />
+              )}
             </div>
+          </div>
         </div>
-        </div>
-        </div>
-        </section>
+      </div>
+    </section>
   );
 };
 export default withRouter(Login);

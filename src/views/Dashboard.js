@@ -17,12 +17,12 @@ const Dashboard=({history}) =>{
     }, [history, usuario]);
 
   return (
-    <section className="hero">
+    <section>
       <Header />
-      <div className="hero-body is-fullheight">
+      <div className="hero-body is-fullheight is-mt70">
         <div className="container">
-            <h1 className="title is-1 has-text-centered">Hola {nombre}! </h1>
-            <h2 className="subtitle is-4 has-text-centered">Estos son tus compañeros de hoy</h2>
+            <h1 className="title is-1 has-text-centered">¡Hola {nombre}! </h1>
+            <h2 className="subtitle is-4 has-text-centered">Estos son los compañeros a los puedes hacerle ¡HI-FIVE!</h2>
             <Coworkers />
         </div>
       </div>

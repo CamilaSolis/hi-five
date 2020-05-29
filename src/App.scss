@@ -9,20 +9,21 @@ $pink: #fa7c91;
 $brown: #757763;
 $beige-light: #d0d1cd;
 $beige-lighter: #eff0eb;
+$aqua-green: #4BAFA1;
 
 // Update Bulma's global variables
 $family-sans-serif: 'Nunito', sans-serif;
 $grey-dark: $brown;
 $grey-light: $beige-light;
-$primary: $purple;
+$primary: $aqua-green;
 $link: $pink;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 
 // Update some of Bulma's component variables
-$body-background-color: $beige-lighter;
-$control-border-width: 2px;
-$input-border-color: transparent;
+$body-background-color: #F7F0EB;
+$control-border-width: 1px;
+$input-border-color: #dbdbdb;
 $input-shadow: none;
 
 //Extras
@@ -32,4 +33,45 @@ $input-shadow: none;
 
 figure{
   margin: auto;
+}
+
+.navbar{
+  background: #E17063;
+}
+
+.responsive-logo{
+  margin: auto;
+  display: block;
+  @media screen and (max-width: 769px){
+    height: 150px;
+  }
+}
+
+.is-mt70{
+  margin-top: 30px;
+}
+
+.mt-15{
+  margin-top: 15px;
+}
+.mb-15{
+  margin-bottom: 15px;
+}
+
+.popup-content{
+  padding: 1rem !important;
+  border-radius: 5px;
+  @media screen and (max-width: 769px){
+    width: 80% !important;
+  }
+}
+
+.yay-button{
+  width: 200px;
+  svg{
+    margin-right: 10px;
+  }
+  @media screen and (max-width: 769px){
+    width: 100%;
+  }
 }
