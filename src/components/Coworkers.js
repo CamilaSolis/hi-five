@@ -66,7 +66,7 @@ export default class Coworkers extends React.Component {
                           <p className="has-text-center is-size-4">{item.name.first}{" "}{item.name.last}</p>
                           <p>Ciudad: {item.location.city}</p>
                           <p>Edad: {item.dob.age}</p>
-                          <p>Cumpleaños: {item.dob.date}</p>
+                          <p>Cumpleaños: {item.dob.date.split("T")[0]}</p>
                           <p>Email: {item.email}</p>
                           <p>Celular: {item.cell}</p>
                           <button className="button is-success is-light mt-15 yay-button" onClick={start}>
