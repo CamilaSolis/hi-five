@@ -1,6 +1,6 @@
 # HI-FIVE generator
 
-El objetivo del proyecto es hacer un llamado random de 10 compañeros de trabajo para saludarlos con un caluroso HI-FIVE
+El objetivo del proyecto es hacer un llamado random de 10 compañeros de trabajo para saludarlos con un caluroso HI-FIVE además de poder ver sus tiernas mascotas.
 
 ## Instrucciones de uso
 
@@ -34,6 +34,8 @@ Este se vera en http://localhost:3000/
 ## Construido con
 
 * [Create React APP](https://create-react-app.dev/)
+* [Dog API](https://dog.ceo/dog-api/)
+* [TheCatAPI](https://thecatapi.com/)
 * [Bulma](https://bulma.io/)
 * [Firebase](https://firebase.google.com/)
 * [Random User](https://randomuser.me/)
