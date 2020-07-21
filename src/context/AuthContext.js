@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import app from "../firebaseConfig";
-import Cargando from '../components/Cargando'
+import Loading from '../components/Loading'
 
 export const Auth = React.createContext();
 
@@ -16,7 +16,7 @@ export const AuthContext = ({ children }) => {
     }, []);
 
     if (!showChild) {
-        return <Cargando/>;
+        return <Loading/>;
     } else {
         return (
             <Auth.Provider

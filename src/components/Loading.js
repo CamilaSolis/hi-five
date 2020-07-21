@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Cargando() {
+export default function Loading() {
   return (
     <section className="hero is-fullheight">
       <div className="hero-body">

@@ -1,6 +1,7 @@
 import React from 'react';
 import Popup from "reactjs-popup";
 import { FaSmileBeam} from "react-icons/fa";
+import Pet from "./Pet";
 
 export default class Coworkers extends React.Component {
 
@@ -9,6 +10,8 @@ export default class Coworkers extends React.Component {
     this.state = {
       items: [],
       isLoading: false,
+      changeClass: '',
+      hiFive: 0,
     }
   }
 
@@ -19,19 +22,23 @@ export default class Coworkers extends React.Component {
       this.setState({
         isLoading: true,
         items: workers.results,
+        changeClass: false,
       })
     })
   }
 
   render() {
-      let { isLoading, items } = this.state;
+      let { isLoading, items, hiFive } = this.state;
       
       let audio = new Audio("/yay.mp3")
 
       const start = () => {
         audio.play()
+       this.setState({
+        hiFive: hiFive + 1,
+       })
       }
-
+      console.log( hiFive)
       if(!isLoading){
         return(
           <div>
@@ -62,17 +69,21 @@ export default class Coworkers extends React.Component {
                           </figure>
                           <p>{item.name.first}{" "}{item.name.last}</p>
                         </div>
-                        <div className="column is-7-tablet is-8-desktop is-3-widescreen has-text-left">
+                        <div className="column is-4-tablet is-4-desktop is-3-widescreen has-text-left">
                           <p className="has-text-center is-size-4">{item.name.first}{" "}{item.name.last}</p>
                           <p>Ciudad: {item.location.city}</p>
                           <p>Edad: {item.dob.age}</p>
                           <p>Cumpleaños: {item.dob.date.split("T")[0]}</p>
                           <p>Email: {item.email}</p>
                           <p>Celular: {item.cell}</p>
-                          <button className="button is-success is-light mt-15 yay-button" onClick={start}>
+                          <button className="button is-success is-light mt-15 yay-button" onClick={start} disabled={this.state.changeClass}>
                             <FaSmileBeam />
                               Hi-Five?
                           </button>
+                          <h4>Con este han sido {hiFive} Hi-Five!!!</h4>
+                        </div>
+                        <div className="column is-3-tablet is-4-desktop is-3-widescreen has-text-left">
+                          <Pet />
                         </div>
                       </div>
                     </Popup>
@@ -85,6 +96,3 @@ export default class Coworkers extends React.Component {
       }
   }
 }
-
-
-  //   const url = "https://api.randomuser.me/?results=10"
